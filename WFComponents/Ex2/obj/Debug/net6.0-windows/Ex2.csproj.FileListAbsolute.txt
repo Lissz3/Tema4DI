@@ -15,3 +15,4 @@ G:\Mi unidad\04.DESENV INTERF\1EV\Tema4\WFComponents\Ex2\obj\Debug\net6.0-window
 G:\Mi unidad\04.DESENV INTERF\1EV\Tema4\WFComponents\Ex2\obj\Debug\net6.0-windows\Ex2.genruntimeconfig.cache
 G:\Mi unidad\04.DESENV INTERF\1EV\Tema4\WFComponents\Ex2\obj\Debug\net6.0-windows\ref\Ex2.dll
 G:\Mi unidad\04.DESENV INTERF\1EV\Tema4\WFComponents\Ex2\obj\Debug\net6.0-windows\Ex2.FrmColor.resources
+G:\Mi unidad\04.DESENV INTERF\1EV\Tema4\WFComponents\Ex2\obj\Debug\net6.0-windows\Ex2.Properties.Resources.resources
