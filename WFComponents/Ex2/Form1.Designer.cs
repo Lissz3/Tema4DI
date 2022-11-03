@@ -90,7 +90,7 @@
 			this.txbR.Size = new System.Drawing.Size(100, 23);
 			this.txbR.TabIndex = 4;
 			this.txbR.Text = "0";
-			this.txbR.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txb_KeyUp);
+			this.txbR.Enter += new System.EventHandler(this.MyEnter);
 			// 
 			// txbG
 			// 
@@ -99,7 +99,7 @@
 			this.txbG.Size = new System.Drawing.Size(100, 23);
 			this.txbG.TabIndex = 5;
 			this.txbG.Text = "0";
-			this.txbG.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txb_KeyUp);
+			this.txbG.Enter += new System.EventHandler(this.MyEnter);
 			// 
 			// txbB
 			// 
@@ -108,7 +108,7 @@
 			this.txbB.Size = new System.Drawing.Size(100, 23);
 			this.txbB.TabIndex = 6;
 			this.txbB.Text = "0";
-			this.txbB.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txb_KeyUp);
+			this.txbB.Enter += new System.EventHandler(this.MyEnter);
 			// 
 			// btnColor
 			// 
@@ -138,7 +138,7 @@
 			this.txbPath.Size = new System.Drawing.Size(162, 23);
 			this.txbPath.TabIndex = 9;
 			this.txbPath.Text = "C:\\Users\\bdisa\\Downloads\\banco.png";
-			this.txbPath.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txb_KeyUp);
+			this.txbPath.Enter += new System.EventHandler(this.MyEnter);
 			// 
 			// btnLoad
 			// 
@@ -163,6 +163,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.btnExit;
 			this.ClientSize = new System.Drawing.Size(441, 217);
 			this.Controls.Add(this.pbxImage);
 			this.Controls.Add(this.btnLoad);
@@ -187,7 +188,6 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "ColorShifter";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MyFormClosing);
-			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmColor_KeyUp);
 			((System.ComponentModel.ISupportInitialize)(this.pbxImage)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

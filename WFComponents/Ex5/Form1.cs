@@ -1,17 +1,22 @@
 #nullable disable
+using System.Collections;
+
 namespace Ex5;
 
 public partial class Form1 : Form
 {
 	ListBox.SelectedIndexCollection indices;
 	string selectedOb;
-	int cont = 1;
+	int cont = 0;
 	string titulo = "Titulo Scroll";
+	bool catbat;
 	public Form1()
 	{
 		InitializeComponent();
 		Text = "";
 		MyTimer.Start();
+		Icon = Properties.Resources.catbat;
+		catbat = true;
 	}
 
 	private void btnAdd_Click(object sender, EventArgs e)
@@ -68,6 +73,7 @@ public partial class Form1 : Form
 					lbSecond.Items.Add(it);
 				}
 			}
+			lbSecond.Tag = lbSecond.Items.Count;
 		}
 	}
 
@@ -84,14 +90,14 @@ public partial class Form1 : Form
 
 	private void MyTimer_Tick(object sender, EventArgs e)
 	{
-		if (Text == "")
-		{
-			Text += titulo[titulo.Length - cont].ToString();
-		}
-		cont++;
-		if (cont == titulo.Length - 1)
+		Icon = catbat ? Properties.Resources.catbat : Properties.Resources.catvamp;
+		catbat = catbat ? false : true;
+		if (cont == titulo.Length + 1 )
 		{
 			cont = 0;
+			Text = "";
 		}
+		Text = titulo.Substring(titulo.Length - cont);
+		cont++;
 	}
 }

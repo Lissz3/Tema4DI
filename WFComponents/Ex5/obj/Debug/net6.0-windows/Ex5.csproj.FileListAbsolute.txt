@@ -15,3 +15,4 @@ G:\Mi unidad\04.DESENV INTERF\1EV\Tema4\WFComponents\Ex5\obj\Debug\net6.0-window
 G:\Mi unidad\04.DESENV INTERF\1EV\Tema4\WFComponents\Ex5\obj\Debug\net6.0-windows\Ex5.pdb
 G:\Mi unidad\04.DESENV INTERF\1EV\Tema4\WFComponents\Ex5\obj\Debug\net6.0-windows\Ex5.genruntimeconfig.cache
 G:\Mi unidad\04.DESENV INTERF\1EV\Tema4\WFComponents\Ex5\obj\Debug\net6.0-windows\ref\Ex5.dll
+G:\Mi unidad\04.DESENV INTERF\1EV\Tema4\WFComponents\Ex5\obj\Debug\net6.0-windows\Ex5.Properties.Resources.resources

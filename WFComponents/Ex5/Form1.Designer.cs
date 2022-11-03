@@ -50,6 +50,7 @@ partial class Form1
 			this.lbFirst.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
 			this.lbFirst.Size = new System.Drawing.Size(120, 94);
 			this.lbFirst.TabIndex = 0;
+			this.lbFirst.Tag = "first";
 			this.lbFirst.SelectedIndexChanged += new System.EventHandler(this.lbFirst_SelectedIndexChanged);
 			// 
 			// lbSecond
@@ -60,6 +61,7 @@ partial class Form1
 			this.lbSecond.Name = "lbSecond";
 			this.lbSecond.Size = new System.Drawing.Size(120, 94);
 			this.lbSecond.TabIndex = 1;
+			this.lbSecond.Tag = "0";
 			this.lbSecond.SelectedIndexChanged += new System.EventHandler(this.lbFirst_SelectedIndexChanged);
 			// 
 			// btnAdd
@@ -68,6 +70,7 @@ partial class Form1
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(75, 23);
 			this.btnAdd.TabIndex = 2;
+			this.btnAdd.Tag = "add";
 			this.btnAdd.Text = "Añadir";
 			this.btnAdd.UseVisualStyleBackColor = true;
 			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -78,6 +81,7 @@ partial class Form1
 			this.btnDel.Name = "btnDel";
 			this.btnDel.Size = new System.Drawing.Size(75, 23);
 			this.btnDel.TabIndex = 3;
+			this.btnDel.Tag = "del";
 			this.btnDel.Text = "Quitar";
 			this.btnDel.UseVisualStyleBackColor = true;
 			this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
@@ -88,6 +92,7 @@ partial class Form1
 			this.btnToR.Name = "btnToR";
 			this.btnToR.Size = new System.Drawing.Size(75, 23);
 			this.btnToR.TabIndex = 4;
+			this.btnToR.Tag = "toRight";
 			this.btnToR.Text = "Pasar  →";
 			this.btnToR.UseVisualStyleBackColor = true;
 			this.btnToR.Click += new System.EventHandler(this.btnToR_Click);
@@ -98,6 +103,7 @@ partial class Form1
 			this.btnToL.Name = "btnToL";
 			this.btnToL.Size = new System.Drawing.Size(75, 23);
 			this.btnToL.TabIndex = 5;
+			this.btnToL.Tag = "toLeft";
 			this.btnToL.Text = "Pasar ←";
 			this.btnToL.UseVisualStyleBackColor = true;
 			this.btnToL.Click += new System.EventHandler(this.btnToL_Click);
@@ -108,6 +114,7 @@ partial class Form1
 			this.txbAdd.Name = "txbAdd";
 			this.txbAdd.Size = new System.Drawing.Size(175, 23);
 			this.txbAdd.TabIndex = 6;
+			this.txbAdd.Tag = "TextToAdd";
 			this.txbAdd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txbAdd_KeyUp);
 			// 
 			// lblCount

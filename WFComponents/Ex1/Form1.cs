@@ -1,4 +1,4 @@
-#define caracter
+#define CARACTER
 namespace Ex1
 {
 	public partial class Form1 : Form
@@ -19,13 +19,10 @@ namespace Ex1
 			{
 				Text = string.Format("{0} - X: {1}, Y: {2}", title, e.X, e.Y);
 			}
-			else if (sender == btnLClick)
-			{
-				Text = string.Format("{0} - X: {1}, Y: {2}", title, e.X + btnLClick.Left, e.Y + btnLClick.Top);
-			}
 			else
 			{
-				Text = string.Format("{0} - X: {1}, Y: {2}", title, e.X + btnRClick.Left, e.Y + btnRClick.Top);
+				Button bt = (Button)sender;// == btnRClick ? btnRClick : btnLClick;
+				Text = string.Format("{0} - X: {1}, Y: {2}", title, e.X + bt.Left, e.Y + bt.Top);
 			}
 		}
 
@@ -34,20 +31,19 @@ namespace Ex1
 			Text = title;
 		}
 
-		private void Form1_KeyUp(object sender, KeyEventArgs e)
+		private void Form1_KeyUp(object sender, KeyEventArgs e) //solo teclas
 		{
+#if !CARACTER
 			if (e.KeyCode == Keys.Escape)
 			{
 				Text = title;
 			}
 			else
 			{
-#if caracter
-				Text = e.KeyCode.ToString();
-#else
+				Text = e.KeyData.ToString();
 				Text = e.KeyValue.ToString();
-#endif
 			}
+#endif
 		}
 
 		private void Form1_MouseUp(object sender, MouseEventArgs e)
@@ -92,6 +88,13 @@ namespace Ex1
 			{
 				e.Cancel = true;
 			}
+		}
+
+		private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+		{
+#if CARACTER
+			Text = e.KeyChar.ToString();		
+#endif
 		}
 	}
 }

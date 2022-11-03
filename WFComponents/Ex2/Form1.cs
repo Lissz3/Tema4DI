@@ -10,6 +10,7 @@ namespace Ex2
 		public FrmColor()
 		{
 			InitializeComponent();
+			CancelButton = btnExit;
 		}
 
 		private void BtnColor_Click(object sender, EventArgs e)
@@ -51,25 +52,7 @@ namespace Ex2
 			ChangeColor();
 		}
 
-		private void Txb_KeyUp(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode == Keys.Enter)
-			{
-				if (sender == txbR || sender == txbG || sender == txbB)
-				{
-					ChangeColor();
-				}
-				else
-				{
-					if (txbPath.Text != "")
-					{
-						LoadImage(txbPath.Text);
-					}
 
-				}
-			}
-
-		}
 
 
 		private void MyFormClosing(object sender, FormClosingEventArgs e)
@@ -85,14 +68,6 @@ namespace Ex2
 			Close();
 		}
 
-		private void FrmColor_KeyUp(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode == Keys.Escape)
-			{
-				Close();
-			}
-		}
-
 		private void Btns_MouseEnter(object sender, EventArgs e)
 		{
 			((Button)sender).BackColor = Color.DodgerBlue;
@@ -103,9 +78,16 @@ namespace Ex2
 			((Button)sender).BackColor = DefaultBackColor;
 		}
 
-		void LoadImage(string path)
+		void LoadImage(string path)  //Excepcion
 		{
-			pbxImage.Image = new Bitmap(path);
+			try
+			{
+				pbxImage.Image = new Bitmap(path);
+			}
+			catch (ArgumentException)
+			{
+				lblPath.ForeColor = Color.Red;
+			}
 		}
 
 		private void BtnLoad_Click(object sender, EventArgs e)
@@ -113,6 +95,18 @@ namespace Ex2
 			if (txbPath.Text != "")
 			{
 				LoadImage(txbPath.Text);
+			}
+		}
+
+		private void MyEnter(object sender, EventArgs e)
+		{
+			if (sender == txbR || sender == txbG || sender == txbB)
+			{
+				AcceptButton = btnColor;
+
+			} else if ( sender == txbPath)
+			{
+				AcceptButton = btnLoad;
 			}
 		}
 	}
