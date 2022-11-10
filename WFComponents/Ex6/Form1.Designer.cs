@@ -77,7 +77,7 @@
 			this.btnReset.TabIndex = 2;
 			this.btnReset.Text = "RESET";
 			this.btnReset.UseVisualStyleBackColor = true;
-			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+			this.btnReset.Click += new System.EventHandler(this.BtnReset_Click);
 			// 
 			// menuStrip1
 			// 
@@ -106,14 +106,14 @@
 			this.gToolStripMenuItem.Name = "gToolStripMenuItem";
 			this.gToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.gToolStripMenuItem.Text = "Grabar";
-			this.gToolStripMenuItem.Click += new System.EventHandler(this.gToolStripMenuItem_Click);
+			this.gToolStripMenuItem.Click += new System.EventHandler(this.GToolStripMenuItem_Click);
 			// 
 			// resetToolStripMenuItem
 			// 
 			this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
 			this.resetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.resetToolStripMenuItem.Text = "Reset";
-			this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+			this.resetToolStripMenuItem.Click += new System.EventHandler(this.ResetToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -125,14 +125,14 @@
 			this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
 			this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.salirToolStripMenuItem.Text = "Salir";
-			this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+			this.salirToolStripMenuItem.Click += new System.EventHandler(this.SalirToolStripMenuItem_Click);
 			// 
 			// aToolStripMenuItem
 			// 
 			this.aToolStripMenuItem.Name = "aToolStripMenuItem";
 			this.aToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
 			this.aToolStripMenuItem.Text = "Acerca de...";
-			this.aToolStripMenuItem.Click += new System.EventHandler(this.aToolStripMenuItem_Click);
+			this.aToolStripMenuItem.Click += new System.EventHandler(this.AToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 

@@ -1,15 +1,19 @@
-#define notable
+#define NOTABLE
 #nullable disable
+using Microsoft.VisualBasic.Logging;
+using System.IO;
+
 namespace Ex6
 {
 	public partial class Form1 : Form
 	{
 		private readonly string[] abc = { "-", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ", ",", "+", "" };
 		private readonly string[] nums = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#" };
+		SaveFileDialog saveFileDialog1;
 		public Form1()
 		{
 			InitializeComponent();
-			Form2 f2 = new Form2();
+			Form2 f2 = new();
 			DialogResult res;
 			res = f2.ShowDialog();
 
@@ -37,18 +41,20 @@ namespace Ex6
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-#if notable
+#if NOTABLE
 			tlp.Visible = false;
 			int x = 12;
 			int y = txbMvl.Location.Y + txbMvl.Height + 10;
 
 			for (int i = 0; i < 12; i++)
 			{
-				Button button = new();
-				button.Text = abc[i] + "\n" + nums[i];
-				button.Margin = new Padding(0, 0, 0, 0);
-				button.Location = new Point(x, y);
-				button.Size = new Size(71, 51);
+				Button button = new()
+				{
+					Text = abc[i] + "\n" + nums[i],
+					Margin = new Padding(0, 0, 0, 0),
+					Location = new Point(x, y),
+					Size = new Size(71, 51),
+				};
 				Controls.Add(button);
 				button.Tag = "0";
 				button.MouseEnter += Button_MouseEnter;
@@ -106,7 +112,7 @@ namespace Ex6
 		{
 			((Button)sender).BackColor = Color.LightSteelBlue;
 			((Button)sender).Tag = "1";
-			txbMvl.Text += ((Button)sender).Text.Substring(((Button)sender).Text.Length - 2);
+			txbMvl.Text += ((Button)sender).Text.Substring(((Button)sender).Text.Length - 1);
 		}
 
 		private void Button_MouseEnter(object sender, EventArgs e)
@@ -124,9 +130,9 @@ namespace Ex6
 			}
 		}
 
-		private void btnReset_Click(object sender, EventArgs e)
+		private void BtnReset_Click(object sender, EventArgs e)
 		{
-#if notable
+#if NOTABLE
 			foreach (var item in Controls)
 			{
 				if (item is Button button)
@@ -150,24 +156,72 @@ namespace Ex6
 #endif
 		}
 
-		private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+		private void ResetToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			btnReset_Click(sender, e);
+			BtnReset_Click(sender, e);
 		}
 
-		private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+		private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Close();
 		}
 
-		private void gToolStripMenuItem_Click(object sender, EventArgs e)
+		private void GToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			if (txbMvl.Text != "")
+			{
+				StreamWriter s;
+				saveFileDialog1 = new SaveFileDialog
+				{
+					Title = "Selección de directorio para almacenar datos",
+					InitialDirectory = "C:\\",
+					Filter = "Text Files | *.txt",
+					ValidateNames = true
+				};
 
+				if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+				{
+					try
+					{
+						using (s = new StreamWriter(saveFileDialog1.FileName))
+						{
+							s.WriteLine(txbMvl.Text);
+						}
+					}
+					catch (UnauthorizedAccessException)
+					{
+						MyMBox("Permisos insuficientes");
+					}
+					catch (ArgumentNullException)
+					{
+						MyMBox("El archivo no existe");
+					}
+					catch (IOException)
+					{
+						MyMBox("Error inesperado");
+					}
+				}
+				else
+				{
+					MyMBox("Operación cancelada");
+				}
+			}
+			else
+			{
+				MyMBox("Tiene que insertar un número a guardar");
+			}
 		}
 
-		private void aToolStripMenuItem_Click(object sender, EventArgs e)
+		private void AToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			MessageBox.Show("Movil de escritorio - Isabel Rosado", "Acerca de...",
+							MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
 
+		void MyMBox(string error)
+		{
+			MessageBox.Show(error, "Error",
+							MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 		}
 	}
 }
