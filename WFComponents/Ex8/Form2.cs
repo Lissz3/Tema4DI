@@ -64,7 +64,7 @@ namespace Ex8
 		{
 			string fullname = Files[newImg].FullName;
 			pbForm2.Image = new Bitmap(fullname);
-			pbForm2.Tag = fullname.Substring(fullname.LastIndexOf('\\')+1);
+			pbForm2.Tag = fullname.Substring(fullname.LastIndexOf('\\') + 1);
 			ChangeSizeAndTitle(pbForm2.Image.Size, pbForm2.Tag.ToString());
 		}
 
@@ -96,11 +96,13 @@ namespace Ex8
 			form1.Clear();
 		}
 
-		private void ContextMenuStrip1_Click(object sender, EventArgs e)
+		private void CerrarToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			form1.Clear();
 			Close();
 		}
+
+
 	}
 
 }

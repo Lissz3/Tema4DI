@@ -51,9 +51,11 @@ namespace Ex8
 
 					lblDir.Text = lblText;
 					lblDir.ForeColor = c;
-					
 
-					CreatePictureBoxes();
+					if (files.Length > 0)
+					{
+						CreatePictureBoxes();
+					}
 				}
 			}
 		}
@@ -118,9 +120,9 @@ namespace Ex8
 			PictureBox last = null;
 			for (int i = Controls.Count - 1; i > 0; i--)
 			{
-				if (Controls[i] is PictureBox)
+				if (Controls[i] is PictureBox p)
 				{
-					last = (PictureBox)Controls[i];
+					last = p;
 					break;
 				}
 			}
@@ -199,9 +201,9 @@ namespace Ex8
 		{
 			for (int i = Controls.Count - 1; i > 0; i--)
 			{
-				if (Controls[i] is PictureBox)
+				if (Controls[i] is PictureBox p)
 				{
-					Controls.Remove(Controls[i]);
+					Controls.Remove(p);
 				}
 			}
 
