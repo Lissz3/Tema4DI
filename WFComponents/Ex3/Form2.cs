@@ -12,18 +12,10 @@ namespace Ex3
 {
 	public partial class Form2 : Form
 	{
-		public Form2(string path)
+		public Form2()
 		{
 			InitializeComponent();
-			Text = path.Substring(path.LastIndexOf("\\")+1);
-			try
-			{
-				picbImage.Image = new Bitmap(path);
-			}
-			catch (ArgumentException)
-			{
-				
-			}
+
 
 		}
 	}

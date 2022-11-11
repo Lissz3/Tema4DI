@@ -1,3 +1,7 @@
+#nullable disable
+
+using System.IO;
+
 namespace Ex3
 {
 	public partial class Form1 : Form
@@ -10,6 +14,7 @@ namespace Ex3
 		private void btnNewImage_Click(object sender, EventArgs e)
 		{
 			var filePath = string.Empty;
+			btnNewImage.ForeColor = DefaultForeColor;
 
 			oflSelect.Title = "Selector de imagen";
 			oflSelect.InitialDirectory = "c:\\";
@@ -21,31 +26,35 @@ namespace Ex3
 			if (oflSelect.ShowDialog() == DialogResult.OK)
 			{
 				filePath = oflSelect.FileName;
-				f2 = new(filePath);
+				f2 = new();
+				f2.Text = filePath.Substring(filePath.LastIndexOf("\\") + 1);
+				try
+				{
+					f2.picbImage.Image = new Bitmap(filePath);
+				}
+				catch (ArgumentException)
+				{
+					btnNewImage.ForeColor = Color.Red;
+					f2 = null;
+				}
 			}
 
-			if (cbxModal.Checked)
+			if (f2 != null)
 			{
-				if (f2 != null)
+				if (cbxModal.Checked)
 				{
 					DialogResult res = f2.ShowDialog();
-
 					if (res == DialogResult.Cancel)
 					{
 						f2.Close();
 					}
-
 				}
-
-			}
-			else
-			{
-				if (f2 != null)
+				else
 				{
 					f2.Show();
 				}
-			}
 
+			}
 
 		}
 
