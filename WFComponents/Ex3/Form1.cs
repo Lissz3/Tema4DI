@@ -16,27 +16,34 @@ namespace Ex3
 			oflSelect.Filter = "jpg files (*.jpg)|*.jpg|png files (*.png)|*.png|All files (*.*)|*.*";
 			oflSelect.ValidateNames = true;
 			oflSelect.RestoreDirectory = true;
+			Form2 f2 = null;
 
 			if (oflSelect.ShowDialog() == DialogResult.OK)
 			{
 				filePath = oflSelect.FileName;
+				f2 = new(filePath);
 			}
-
-			Form2 f2 = new(filePath);
 
 			if (cbxModal.Checked)
 			{
-				
-				DialogResult res = f2.ShowDialog();
-				if (res == DialogResult.Cancel)
+				if (f2 != null)
 				{
-					f2.Close();
+					DialogResult res = f2.ShowDialog();
+
+					if (res == DialogResult.Cancel)
+					{
+						f2.Close();
+					}
+
 				}
 
 			}
 			else
 			{
-				f2.Show();
+				if (f2 != null)
+				{
+					f2.Show();
+				}
 			}
 
 

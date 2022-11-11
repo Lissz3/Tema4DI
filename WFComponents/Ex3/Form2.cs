@@ -16,7 +16,14 @@ namespace Ex3
 		{
 			InitializeComponent();
 			Text = path.Substring(path.LastIndexOf("\\")+1);
-			picbImage.Image = new Bitmap(path);
+			try
+			{
+				picbImage.Image = new Bitmap(path);
+			}
+			catch (ArgumentException)
+			{
+				
+			}
 
 		}
 	}

@@ -6,7 +6,7 @@ namespace Ex4
 	{
 		Dictionary<string, Operation> operations = new();
 		string opText;
-		int sec = 0;
+		int sec = 56;
 		int min = 0;
 		public Form1()
 		{
@@ -49,7 +49,7 @@ namespace Ex4
 			}
 		}
 
-		private void txtSegundo_KeyUp(object sender, KeyEventArgs e)
+		private void txtSegundo_KeyUp(object sender, KeyEventArgs e)  //Mejor Accept Button
 		{
 			if (e.KeyCode == Keys.Enter)
 			{
