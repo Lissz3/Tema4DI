@@ -156,11 +156,6 @@ namespace Ex6
 #endif
 		}
 
-		private void ResetToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			BtnReset_Click(sender, e);
-		}
-
 		private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Close();
@@ -175,15 +170,16 @@ namespace Ex6
 				{
 					Title = "Selección de directorio para almacenar datos",
 					InitialDirectory = "C:\\",
-					Filter = "Text Files | *.txt",
-					ValidateNames = true
+					Filter = "Text Files| *.txt|All files (*.*)| *.*",
+					ValidateNames = true,
+					OverwritePrompt = false
 				};
 
 				if (saveFileDialog1.ShowDialog() == DialogResult.OK)
 				{
 					try
 					{
-						using (s = new StreamWriter(saveFileDialog1.FileName))
+						using (s = new StreamWriter(saveFileDialog1.FileName, true))
 						{
 							s.WriteLine(txbMvl.Text);
 						}

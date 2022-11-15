@@ -113,7 +113,7 @@
 			this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
 			this.resetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.resetToolStripMenuItem.Text = "Reset";
-			this.resetToolStripMenuItem.Click += new System.EventHandler(this.ResetToolStripMenuItem_Click);
+			this.resetToolStripMenuItem.Click += new System.EventHandler(this.BtnReset_Click);
 			// 
 			// toolStripSeparator1
 			// 

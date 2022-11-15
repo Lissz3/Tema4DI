@@ -39,6 +39,7 @@ partial class Form1
 			this.lblCount = new System.Windows.Forms.Label();
 			this.lblIndex = new System.Windows.Forms.Label();
 			this.MyTimer = new System.Windows.Forms.Timer(this.components);
+			this.tp = new System.Windows.Forms.ToolTip(this.components);
 			this.SuspendLayout();
 			// 
 			// lbFirst
@@ -51,7 +52,7 @@ partial class Form1
 			this.lbFirst.Size = new System.Drawing.Size(120, 94);
 			this.lbFirst.TabIndex = 0;
 			this.lbFirst.Tag = "first";
-			this.lbFirst.SelectedIndexChanged += new System.EventHandler(this.lbFirst_SelectedIndexChanged);
+			this.lbFirst.SelectedIndexChanged += new System.EventHandler(this.LbFirst_SelectedIndexChanged);
 			// 
 			// lbSecond
 			// 
@@ -62,7 +63,7 @@ partial class Form1
 			this.lbSecond.Size = new System.Drawing.Size(120, 94);
 			this.lbSecond.TabIndex = 1;
 			this.lbSecond.Tag = "0";
-			this.lbSecond.SelectedIndexChanged += new System.EventHandler(this.lbFirst_SelectedIndexChanged);
+			this.lbSecond.SelectedIndexChanged += new System.EventHandler(this.LbFirst_SelectedIndexChanged);
 			// 
 			// btnAdd
 			// 
@@ -73,7 +74,7 @@ partial class Form1
 			this.btnAdd.Tag = "add";
 			this.btnAdd.Text = "Añadir";
 			this.btnAdd.UseVisualStyleBackColor = true;
-			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
 			// 
 			// btnDel
 			// 
@@ -84,7 +85,7 @@ partial class Form1
 			this.btnDel.Tag = "del";
 			this.btnDel.Text = "Quitar";
 			this.btnDel.UseVisualStyleBackColor = true;
-			this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+			this.btnDel.Click += new System.EventHandler(this.BtnDel_Click);
 			// 
 			// btnToR
 			// 
@@ -95,7 +96,7 @@ partial class Form1
 			this.btnToR.Tag = "toRight";
 			this.btnToR.Text = "Pasar  →";
 			this.btnToR.UseVisualStyleBackColor = true;
-			this.btnToR.Click += new System.EventHandler(this.btnToR_Click);
+			this.btnToR.Click += new System.EventHandler(this.BtnToR_Click);
 			// 
 			// btnToL
 			// 
@@ -106,7 +107,7 @@ partial class Form1
 			this.btnToL.Tag = "toLeft";
 			this.btnToL.Text = "Pasar ←";
 			this.btnToL.UseVisualStyleBackColor = true;
-			this.btnToL.Click += new System.EventHandler(this.btnToL_Click);
+			this.btnToL.Click += new System.EventHandler(this.BtnToL_Click);
 			// 
 			// txbAdd
 			// 
@@ -115,7 +116,6 @@ partial class Form1
 			this.txbAdd.Size = new System.Drawing.Size(175, 23);
 			this.txbAdd.TabIndex = 6;
 			this.txbAdd.Tag = "TextToAdd";
-			this.txbAdd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txbAdd_KeyUp);
 			// 
 			// lblCount
 			// 
@@ -173,4 +173,5 @@ partial class Form1
     private Label lblCount;
     private Label lblIndex;
 	private System.Windows.Forms.Timer MyTimer;
+	private ToolTip tp;
 }

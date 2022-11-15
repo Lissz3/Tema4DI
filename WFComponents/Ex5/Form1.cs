@@ -17,9 +17,18 @@ public partial class Form1 : Form
 		MyTimer.Start();
 		Icon = Properties.Resources.catbat;
 		catbat = true;
+		AcceptButton = btnAdd;
+		tp.SetToolTip(btnAdd, "Añadir elementos");
+		tp.SetToolTip(btnDel, "Eliminar elementos seleccionados");
+		tp.SetToolTip(btnToL, "Añadir elementos de derecha a izquierda");
+		tp.SetToolTip(btnToR, "Añadir elementos de izquierda a derecha");
+		tp.SetToolTip(btnToR, "Añadir elementos de izquierda a derecha");
+		tp.SetToolTip(txbAdd, "Elemento a añadir");
+		tp.SetToolTip(lbFirst, "Primer ListBox");
+		tp.SetToolTip(lbFirst, "Segundo ListBox");
 	}
 
-	private void btnAdd_Click(object sender, EventArgs e)
+	private void BtnAdd_Click(object sender, EventArgs e)
 	{
 		if (lbFirst.FindStringExact(txbAdd.Text) == ListBox.NoMatches && txbAdd.Text != "")
 		{
@@ -28,15 +37,8 @@ public partial class Form1 : Form
 		}
 	}
 
-	private void txbAdd_KeyUp(object sender, KeyEventArgs e)
-	{
-		if (e.KeyCode == Keys.Enter)
-		{
-			btnAdd_Click(sender, e);
-		}
-	}
 
-	private void lbFirst_SelectedIndexChanged(object sender, EventArgs e)
+	private void LbFirst_SelectedIndexChanged(object sender, EventArgs e)
 	{
 		if (sender == lbFirst)
 		{
@@ -49,23 +51,29 @@ public partial class Form1 : Form
 		}
 		else
 		{
-			selectedOb = ((ListBox)sender).SelectedItem.ToString();
+			if (lbSecond.SelectedIndex != -1)
+			{
+				selectedOb = ((ListBox)sender).SelectedItem.ToString();
+			}
 		}
 	}
 
-	private void btnDel_Click(object sender, EventArgs e)
+	private void BtnDel_Click(object sender, EventArgs e)
 	{
-		for (int i = indices.Count - 1; i >= 0; i--)
+		if (lbFirst.Items.Count != 0)
 		{
-			lbFirst.Items.RemoveAt(indices[i]);
+			for (int i = indices.Count - 1; i >= 0; i--)
+			{
+				lbFirst.Items.RemoveAt(indices[i]);
+			}
 		}
 	}
 
-	private void btnToR_Click(object sender, EventArgs e)
+	private void BtnToR_Click(object sender, EventArgs e)
 	{
 		if (indices != null)
 		{
-			for (int i = 0; i < indices.Count; i++)
+			for (int i = indices.Count - 1; i >= 0; i--)
 			{
 				string it = lbFirst.Items[indices[i]].ToString();
 				if (lbSecond.FindStringExact(it) == ListBox.NoMatches)
@@ -73,26 +81,36 @@ public partial class Form1 : Form
 					lbSecond.Items.Add(it);
 				}
 			}
+
+			for (int i = indices.Count - 1; i >= 0; i--)
+			{
+				lbFirst.Items.RemoveAt(indices[i]);
+			}
 			lbSecond.Tag = lbSecond.Items.Count;
+			tp.SetToolTip(lbSecond, lbSecond.Items.Count.ToString());
 		}
 	}
 
-	private void btnToL_Click(object sender, EventArgs e)
+	private void BtnToL_Click(object sender, EventArgs e)
 	{
 		if (selectedOb != null)
 		{
 			if (lbFirst.FindStringExact(selectedOb) == ListBox.NoMatches)
 			{
 				lbFirst.Items.Add(selectedOb);
+				lbSecond.Items.Remove(selectedOb);
 			}
+			lbSecond.ClearSelected();
 		}
+		tp.SetToolTip(lbSecond, lbSecond.Items.Count.ToString());
+
 	}
 
 	private void MyTimer_Tick(object sender, EventArgs e)
 	{
 		Icon = catbat ? Properties.Resources.catbat : Properties.Resources.catvamp;
 		catbat = catbat ? false : true;
-		if (cont == titulo.Length + 1 )
+		if (cont == titulo.Length + 1)
 		{
 			cont = 0;
 			Text = "";

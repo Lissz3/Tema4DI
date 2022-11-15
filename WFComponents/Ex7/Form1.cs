@@ -138,7 +138,7 @@ namespace Ex7
 			} 
 			else
 			{
-				cr.MinMax(cmbAlumno.SelectedIndex, out int min, out int max);
+				cr.MinMax(cmbAlumno.SelectedIndex, out int max, out int min);
 				lblStAvg.Text = string.Format("Media: {0:0.00}", cr.Average(cmbAlumno.SelectedIndex));
 				lblMax.Text = string.Format("Nota máxima: {0}", max);
 				lblMin.Text = string.Format("Nota mínima: {0}", min);
