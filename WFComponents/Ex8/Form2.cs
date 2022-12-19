@@ -63,7 +63,14 @@ namespace Ex8
 		public void SetImage(int newImg)
 		{
 			string fullname = Files[newImg].FullName;
-			pbForm2.Image = new Bitmap(fullname);
+			try
+			{
+				pbForm2.Image = new Bitmap(fullname);
+			}
+			catch (ArgumentException)
+			{
+				pbForm2.Image = new Bitmap(Properties.Resources.corrupted);
+			}
 			pbForm2.Tag = fullname.Substring(fullname.LastIndexOf('\\') + 1);
 			ChangeSizeAndTitle(pbForm2.Image.Size, pbForm2.Tag.ToString());
 		}

@@ -67,15 +67,23 @@ namespace Ex8
 			int cont = 0;
 			for (int i = 0; i < files.Length; i++)
 			{
-				PictureBox pb = new()
+				PictureBox pb = null;
+				pb = new()
 				{
 					Location = new Point(x, y),
-					Image = new Bitmap(files[i].FullName),
 					Tag = i,
 					Size = new Size(180, 120),
 					BorderStyle = BorderStyle.FixedSingle,
 					SizeMode = PictureBoxSizeMode.Zoom,
 				};
+				try
+				{
+					pb.Image = new Bitmap(files[i].FullName);
+				}
+				catch (ArgumentException)
+				{
+					pb.Image = new Bitmap(Properties.Resources.corrupted);
+				}
 				x += pb.Width + 10;
 				cont++;
 				if (cont == 3)

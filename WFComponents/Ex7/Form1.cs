@@ -8,7 +8,6 @@ namespace Ex7
 		public Form1()
 		{
 			InitializeComponent();
-			cr = new Classroom(GetStudents());
 		}
 
 		string GetStudents()
@@ -37,6 +36,7 @@ namespace Ex7
 			{
 				MyMBox("Error inesperado");
 			}
+
 			return null;
 		}
 
@@ -48,6 +48,14 @@ namespace Ex7
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			if (GetStudents() == null)
+			{
+				Environment.Exit(0);
+			} 
+			
+			cr = new Classroom(GetStudents());
+
+
 			string asigOc = "";
 			int length = 0;
 
@@ -120,7 +128,9 @@ namespace Ex7
 						Tag = Enum.GetName(typeof(Asignaturas), j) + ", " + cr.students[i],
 					};
 					Controls.Add(lblNotas);
-					lblNotas.MouseHover += new EventHandler(lbl_MouseHover);
+					lblNotas.MouseEnter += new EventHandler(LblNotas_MouseEnter);
+					lblNotas.MouseLeave += new EventHandler(LblNotas_MouseLeave);
+					toolTip1.SetToolTip(lblNotas, lblNotas.Tag.ToString());
 					x += lblAsOculta.PreferredSize.Width;
 				}
 				x = 12;
@@ -134,8 +144,8 @@ namespace Ex7
 		{
 			if (sender == cmbAsig)
 			{
-				lblAsigAvg.Text = string.Format("Media: {0:0.00}", cr.Average((Asignaturas) cmbAsig.SelectedIndex));
-			} 
+				lblAsigAvg.Text = string.Format("Media: {0:0.00}", cr.Average((Asignaturas)cmbAsig.SelectedIndex));
+			}
 			else
 			{
 				cr.MinMax(cmbAlumno.SelectedIndex, out int max, out int min);
@@ -146,9 +156,14 @@ namespace Ex7
 			}
 		}
 
-		private void lbl_MouseHover(object sender, EventArgs e)
+		private void LblNotas_MouseEnter(object sender, EventArgs e)
 		{
-			toolTip1.SetToolTip((Label)sender, (((Label)sender).Tag).ToString());
+			((Label)sender).BackColor = Color.Violet;
+		}
+
+		private void LblNotas_MouseLeave(object sender, EventArgs e)
+		{
+			((Label)sender).BackColor = DefaultBackColor;
 		}
 	}
 }
