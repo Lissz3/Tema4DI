@@ -14,12 +14,14 @@ namespace Ex9
 		string initialTitle = "Sin título : DuckPad++";
 		string lastDir;
 		List<string> recentFiles = new List<string>();
-		Form2 f2 = new ();
+		Form2 f2 = new();
+
 		public Form1()
 		{
 			InitializeComponent();
 			Text = initialTitle;
 		}
+
 		private void NuevoDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Text.Contains('*'))
@@ -272,12 +274,8 @@ namespace Ex9
 
 		private void RtxbMine_TextChanged(object sender, EventArgs e)
 		{
-			if (rtxbMine.Text != "")
-			{
-				Text = initialText == rtxbMine.Text ? initialTitle : "*" + initialTitle;
-
-				ChangeText();
-			}
+			Text = initialText == rtxbMine.Text ? initialTitle : "*" + initialTitle;
+			ChangeText();
 		}
 
 
@@ -376,7 +374,7 @@ namespace Ex9
 
 		private void RtxbMine_SelectionChanged(object sender, EventArgs e)
 		{
-				SetTextInfo();
+			SetTextInfo();
 		}
 
 		private void SetTextInfo()
